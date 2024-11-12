@@ -135,7 +135,7 @@ final class WbcErechtCookieConsent extends CMSPlugin implements SubscriberInterf
 		
 		//$wa->registerAndUseStyle('cookieconsent', 'media/plg_system_wbcerechtcookieconsent/css/wbcerechtcookieconsent.css', [], [], []);
 		
-		// CSS Anpassung für das Overlay 
+		// CSS Anpassung für das Overlay der blockierten Elemente
 		$btnbgcolor 		= $this->params->get('wbcerechtbtnbgcolor');
 		$btncolor 			= $this->params->get('wbcerechtbtncolor');
 		$btnhovercolor 		= $this->params->get('wbcerechtbtnhovercolor');
@@ -144,14 +144,23 @@ final class WbcErechtCookieConsent extends CMSPlugin implements SubscriberInterf
 		$btnactivebgcolor 	= $this->params->get('wbcerechtbtnactivebgcolor');
 		$overlaybgcolor 	= $this->params->get('wbcerechtoverlaybgcolor');
 		$overlaycolor 		= $this->params->get('wbcerechtoverlaycolor');
+		$btnborderradius    = $this->params->get('wbcerechtbtnborderradius');
+		$linkcolor 			= $this->params->get('wbcerechtlinkcolor"');
+		$linkhovercolor 	= $this->params->get('wbcerechtlinkhovercolor');
+		$linkactivecolor 	= $this->params->get('wbcerechtlinkactivecolor');
+		$containercolor 	= $this->params->get('wbcerechtcontainercolor');
 
-		$uc_css  = ".uc-embedding-buttons > .uc-embedding-accept { background: $btnbgcolor; color: $btncolor; border-radius: 0; }"; 
+		$uc_css  = ".uc-embedding-buttons > button {border-radius: $btnborderradius;}";
+		$uc_css .= ".uc-embedding-buttons > .uc-embedding-accept { background: $btnbgcolor; color: $btncolor; border-radius: $btnborderradius; }"; 
 		$uc_css .= ".uc-embedding-buttons > .uc-embedding-accept:hover, .uc-embedding-buttons > .uc-embedding-accept:focus { background: $btnhoverbgcolor; color: $btnhovercolor; }";
 		$uc_css .= ".uc-embedding-buttons > .uc-embedding-accept:active  { background: $btnactivebgcolor; color: $btnactivecolor; }";
-		$uc_css .= ".uc-embedding-buttons > .uc-embedding-more-info { border-radius: 0; }"; 
+		$uc_css .= ".uc-embedding-buttons > .uc-embedding-more-info { border-radius: $btnborderradius; }"; 
 		$uc_css .= ".uc-embedding-container { border-radius: 0; width: 100%!important; height: 100%!important; background: $overlaybgcolor!important; }";
-		$uc_css .= ".uc-embedding-container > .uc-embedding-wrapper { background-color: transparent; border-radius: 0; box-shadow: none; width: 100%!important;}";
+		$uc_css .= ".uc-embedding-container > .uc-embedding-wrapper { background-color: $containercolor; border-radius: 0; box-shadow: none; width: 100%!important;}";
 		$uc_css .= ".description-text, uc-embedding-wrapper h3  { color: $overlaycolor; }";
+		$uc_css .= ".uc-embedding-wrapper .a { color: $linkcolor; }";
+		$uc_css .= ".uc-embedding-wrapper .a:hover, .uc-embedding-wrapper a:focus { color: $linkhovercolor; }";
+		$uc_css .= ".uc-embedding-wrapper .a:active { color: $linkactivecolor; }";
 
 		$wa->addInlineStyle($uc_css);
 
@@ -167,10 +176,13 @@ final class WbcErechtCookieConsent extends CMSPlugin implements SubscriberInterf
 		if ($blockedcontentItems) {
 			
 			$blockedcontent = '';
+			$reloadIds	  	= '';
+
 			foreach ($blockedcontentItems as $blockedcontentItem) {
 				$id = $blockedcontentItem['id'];
 				$container = $blockedcontentItem['container'];	
-				$blockedcontent .= "'$id':'$container',";
+				$blockedcontent  .= "'$id':'$container',";
+				$reloadIds       .= "'$id', ";
 			}
 		}
 
@@ -179,12 +191,22 @@ final class WbcErechtCookieConsent extends CMSPlugin implements SubscriberInterf
 		echo HtmlHelper::_('script', $wbcerechtcookiedataprotector, [], []);
 		echo HtmlHelper::_('script', 'https://privacy-proxy.usercentrics.eu/legacy/uc-block.bundle.js', [], []);
 		
-		// script für die overlay Elemente
-		$overlayBlockesContent = "uc.blockElements({";
-		$overlayBlockesContent .= $blockedcontent;
-		$overlayBlockesContent .= "});";
-		$wa->addInlineScript($overlayBlockesContent);	
-
+		// script für die overlays der blockierten Elemente
+		if(!empty($blockedcontent)){
+			$ScriptoverlayBlockesContent = "uc.blockElements({";
+			$ScriptoverlayBlockesContent .= $blockedcontent;
+			$ScriptoverlayBlockesContent .= "});";
+			$wa->addInlineScript($ScriptoverlayBlockesContent);	
+ 		
+			// script zum Reload der Seite nach Consent Aenderung
+			$ScriptReload  = "uc.reloadOnOptIn(";
+			$ScriptReload .= $reloadIds;
+			$ScriptReload .= ");";
+			$ScriptReload .= "uc.reloadOnOptOut(";
+			$ScriptReload .= $reloadIds;
+			$ScriptReload .= ");";
+			$wa->addInlineScript($ScriptReload);	
+		}
 		// Cookiebanner auf Impresum und Datenschutz ausblenden
 		$wbcblockerechtcookiebanner 	 = $this->params->get('wbcblockerechtcookiebanner');
 		$wbcblockerechtcookiebanneritems = [];

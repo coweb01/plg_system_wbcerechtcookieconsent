@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" ?>
 <updates>
 	<update>
-		<name>plg_system_wbcerechtcookieconsent 1.0.1</name>
+		<name>plg_system_wbcerechtcookieconsent 1.0.2</name>
 		<description>E-Recht24 Cookieconsent Banner</description>
 		<element>plg_system_wbcerechtcookieconsent</element>
 		<type>plugin</type>

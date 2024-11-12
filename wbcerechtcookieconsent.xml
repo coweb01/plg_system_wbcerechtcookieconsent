@@ -7,7 +7,7 @@
 	<creationDate>23.08.2024</creationDate>
 	<copyright>Copyright (C) 2024 das-webconcept.com, All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses GNU/GPL</license>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<description>PLG_WBCERECHTCOOKIECONSENT_DESCRIPTION</description>
 	<namespace path="src">Joomla\Plugin\System\WbcErechtCookieConsent</namespace>
 	<files>
@@ -84,14 +84,6 @@
 					<option value="navbar">PLG_WBCERECHTCOOKIECONSENT_POSITION_NAVBAR</option>
 					<option value="footerbottom">PLG_WBCERECHTCOOKIECONSENT_POSITION_FOOTER</option>
 				</field>
-
-				<field name="wbcerechtcookiebannerplaceholderimg" 
-					type="media" 
-					label="PLG_WBCERECHTCOOKIECONSENT_PLACEHOLDER_IMG_LABEL" 
-					description="PLG_WBCERECHTCOOKIECONSENT_PLACEHOLDER_IMG_DESC" 
-					preview="true"
-					types="jpg, jpeg, png, svg"
-					/>
 					
 				<field name="wbcblockerechtcookiebanner" 
 					type="list" 
@@ -131,6 +123,31 @@
 					published="1"
 					showon="wbcblockerechtcookiebanner:1"
 					/>	
+			
+				<field name="wbcerechtlinkcolor"
+					type="color"
+					default="#000000"
+					format="hex"
+					label="PLG_WBCERECHTCOOKIECONSENT_LINK_COLOR_LABEL"
+				/>	
+				<field name="wbcerechtlinkhovercolor"
+					type="color"
+					default="#000000"
+					format="hex"
+					label="PLG_WBCERECHTCOOKIECONSENT_LINK_HOVER_COLOR_LABEL"
+				/>
+				<field name="wbcerechtlinkactivecolor"
+					type="color"
+					default="#000000"
+					format="hex"
+					label="PLG_WBCERECHTCOOKIECONSENT_LINK_ACTIVE_COLOR_LABEL"
+				/>		
+				<field name="wbcerechtbtnborderradius"
+					type="text"
+					default="0px"
+					label="PLG_WBCERECHTCOOKIECONSENT_BUTTON_BORDER_LABEL"
+					description="PLG_WBCERECHTCOOKIECONSENT_BUTTON_BORDER_DESC"
+				/>	
 				<field name="wbcerechtbtncolor"
 					type="color"
 					format="rgba"
@@ -164,13 +181,19 @@
 				<field name="wbcerechtoverlaybgcolor"
 					type="color"
 					format="rgba"
-					default="rgba(0,0,0,0.05)"
+					default="rgba(0,0,0,0.01)"
 					label="PLG_WBCERECHTCOOKIECONSENT_OVERLAY_BG_COLOR_LABEL"	
 				/>
 				<field name="wbcerechtoverlaycolor"
 					type="color"
 					default="#000000"
 					label="PLG_WBCERECHTCOOKIECONSENT_OVERLAY_COLOR_LABEL"	
+				/>
+				<field name="wbcerechtcontainerbgcolor"
+					type="color"
+					format="rgba"
+					default="rgba(255,255,255,.6)"
+					label="PLG_WBCERECHTCOOKIECONSENT_CONTAINER_BG_COLOR_LABEL"	
 				/>
 			</fieldset>
         </fields>
