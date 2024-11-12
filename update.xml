@@ -13,7 +13,7 @@
 			<downloadurl type="full" format="zip">https://github.com/coweb01/plg_system_wbcerechtcookieconsent/releases/download/1.0.1/plg_system_wbcerechtcookieconsent.zip</downloadurl>
 		</downloads>
 		<tags>stable</tags>
-		<sha512>096690e1b05a40e6ffbc748868f9f01285f50ebd50747f1f89daf77af0dcb13e1d3215a352b804f8873838024d6cd82e4e00b201563b12d348b5d163d01da626</sha512>
+		<sha512>98eeea231b875794be9e4ef83c7db8e3829d8dd45fc07a32bbeb13fdff61fcc5dc637b03eb29aaafbf71d3d271d87bbcaa92665435a93eaa18b544e736a2c440</sha512>
 		<maintainer>Claudia Oerter</maintainer>
 		<maintainerurl>https://www.das-webconcept.de</maintainerurl>
 		<php_minimum>8.0.0</php_minimum>
