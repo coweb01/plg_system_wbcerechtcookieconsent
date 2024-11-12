@@ -1,0 +1,68 @@
+{ 
+    "Google Maps ACF": [
+      {
+      "id": "S1pcEj_jZX",
+      "container": ".google-maps"
+      }
+    ],
+    "Google Maps Yoo": [
+      {
+      "id": "S1pcEj_jZX",
+      "container": ".uk-maps"
+      }
+    ],
+    "Google Fonts":  [
+      { 
+        "id": "HkPBYFofN",
+        "container": ""
+      }
+    ],
+    "Google Tag Manager": [
+      {
+      "id": "BJ59EidsWQ",
+      "container": ""
+      }
+    ],
+    "Google Analytics": [
+      {
+      "id": "HkocEodjb7",
+      "container": ""
+      }
+    ],
+    "Google Analytics 4":[
+      {
+        "id": "87JYasXPF",
+        "container": ""
+      }
+    ],
+    "Open Street Map Yoo": [
+      {
+        "id": "j7Igy6o8D",
+        "container": ".uk-map"
+      }
+    ],
+    "Open Street Map ACF": [
+      {
+        "id": "j7Igy6o8D",
+        "container": ".openstreetmap"
+      }
+    ],
+    "Matomo": [
+      {
+        "id": "zqWojrT0P",
+        "container": ""
+      }
+    ],
+    "Vimeo": [
+      {
+        "id": "HyEX5Nidi-m",
+        "container": ".vimeo"
+      }
+    ],
+    "YouTube Video": [
+      {
+        "id": "BJz7qNsdj-7",
+        "container": ".youtube"
+      }
+    ]
+  }

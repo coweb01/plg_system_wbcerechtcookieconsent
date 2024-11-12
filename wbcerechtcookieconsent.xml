@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="system" method="upgrade" >
+	<name>PLG_SYSTEM_WBCERECHTCOOKIECONSENT</name>
+	<author>das-webconcpt.de</author>
+	<authorEmail>info@das-webconcept.de</authorEmail>
+	<authorUrl>https://das-webconcept.de</authorUrl>
+	<creationDate>23.08.2024</creationDate>
+	<copyright>Copyright (C) 2024 das-webconcept.com, All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses GNU/GPL</license>
+	<version>1.0.1</version>
+	<description>PLG_WBCERECHTCOOKIECONSENT_DESCRIPTION</description>
+	<namespace path="src">Joomla\Plugin\System\WbcErechtCookieConsent</namespace>
+	<files>
+		<folder plugin="wbcerechtcookieconsent">services</folder>
+		<folder>src</folder>
+	</files>
+	<media destination="plg_system_wbcerechtcookieconsent">
+		<folder>css</folder>
+		<folder>files</folder>
+	</media>
+	<languages>
+		<language tag="de-DE">language/de-DE/de-DE.plg_system_wbcerechtcookieconsent.ini</language>
+		<language tag="de-DE">language/de-DE/de-DE.plg_system_wbcerechtcookieconsent.sys.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.plg_system_wbcerechtcookieconsent.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.plg_system_wbcerechtcookieconsent.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" label="PLG_WBCERECHTCOOKIECONSENT_SETTINGS">
+				<field 
+					name="wbcerechtcookieUrl" 
+					type="text" 
+					default="https://app.eu.usercentrics.eu/browser-ui/latest/loader.js" 
+					label="PLG_WBCERECHTCOOKIECONSENT_CODE_LABEL" 
+					description="PLG_WBCERECHTCOOKIECONSENT_CODE_DESC" 
+					hint="https://app.eu.usercentrics.eu/browser-ui/latest/loader.js"
+					filter="url"
+					/>
+
+				<field 
+					name="wbcerechtcookieId" 
+					type="text" 
+					default="" 
+					label="PLG_WBCERECHTCOOKIECONSENT_ID_LABEL" 
+					description="PLG_WBCERECHTCOOKIECONSENT_ID_DESC" 
+					hint="T9DFnErDl6hY2M"
+					filter="string"
+					/>
+
+				<field name="wbcerechtcookieDataprotector" 	
+					type="text" 
+					default="https://sdp.eu.usercentrics.eu/latest/uc-block.bundle.js" 
+					label="PLG_WBCERECHTCOOKIECONSENT_DATAPROTECT_LABEL" 
+					description="PLG_WBCERECHTCOOKIECONSENT_DATAPROTECT_DESC" 
+					hint="https://sdp.eu.usercentrics.eu/latest/uc-block.bundle.js"
+					filter="url"
+					/>
+
+				<field name="wbcerechtcookieLink" 	
+					type="text" 
+					default="javascript:UC_UI.showSecondLayer();" 
+					label="PLG_WBCERECHTCOOKIECONSENT_LINK_LABEL" 
+					description="PLG_WBCERECHTCOOKIECONSENT_LINK_DESC" 
+					hint="javascript:UC_UI.showSecondLayer();"
+					filter="string"
+					/>
+
+
+				<field name="wbcerechtcookieLinkText" 	
+					type="text" 
+					default="PLG_WBCERECHTCOOKIECONSENT_LINK_TEXT" 
+					label="PLG_WBCERECHTCOOKIECONSENT_LINK_TEXT_LABEL" 
+					description="PLG_WBCERECHTCOOKIECONSENT_LINK_TEXT_DESC" 
+					filter="string"
+					/>
+
+				<field name="wbcerechtcookielinkposition" 
+					type="list" 
+					default="none" 
+					label="PLG_WBCERECHTCOOKIECONSENT_POSITION_LABEL" 
+					description="PLG_WBCERECHTCOOKIECONSENT_POSITION_DESC" 
+					>
+					<option value="none">PLG_WBCERECHTCOOKIECONSENT_POSITION_NONE</option>
+					<option value="navbar">PLG_WBCERECHTCOOKIECONSENT_POSITION_NAVBAR</option>
+					<option value="footerbottom">PLG_WBCERECHTCOOKIECONSENT_POSITION_FOOTER</option>
+				</field>
+
+				<field name="wbcerechtcookiebannerplaceholderimg" 
+					type="media" 
+					label="PLG_WBCERECHTCOOKIECONSENT_PLACEHOLDER_IMG_LABEL" 
+					description="PLG_WBCERECHTCOOKIECONSENT_PLACEHOLDER_IMG_DESC" 
+					preview="true"
+					types="jpg, jpeg, png, svg"
+					/>
+					
+				<field name="wbcblockerechtcookiebanner" 
+					type="list" 
+					default="0" 
+					label="PLG_WBCBLOCKERECHTCOOKIECONSENT_LABEL" 
+					description="PLG_WBBLOCKCERECHTCOOKIECONSENT_DESC" 
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field name="wbcblockedcontent"
+					type="list"
+					label="PLG_WBCBLOCKERECHTCOOKIECONSENT_BLOCKED_CONTENT_LABEL"
+					description="PLG_WBCBLOCKERECHTCOOKIECONSENT_BLOCKED_CONTENT_DESC"
+					multiple="true">
+						<option value="Open Street Map Yoo">Open Street Map (Yootheme)</option>
+						<option value="Open Street Map ACF">Open Street Map (ACF fields)</option>
+						<option value="Google Map Yoo">Google Map (Yootheme)</option>
+						<option value="Google Map ACF">Google Map (ACF fields)</option>
+						<option value="youtube">Youtube</option>	
+						<option value="vimeo">Vimeo</option>
+				</field>
+
+				<field name="wbcimprint"
+					type="menuitem"
+					label="PLG_WBCBLOCKERECHTCOOKIECONSENT_IMPRINT_LABEL"
+					description="PLG_WBCBLOCKERECHTCOOKIECONSENT_IMPRINT_DESC"
+					published="1"
+					showon="wbcblockerechtcookiebanner:1"
+					/>
+
+				<field name="wbcprivacy"
+					type="menuitem"
+					label="PLG_WBCBLOCKERECHTCOOKIECONSENT_DATENSCHUTZ_LABEL"
+					description="PLG_WBCBLOCKERECHTCOOKIECONSENT_DATENSCHUTZ_DESC"
+					published="1"
+					showon="wbcblockerechtcookiebanner:1"
+					/>	
+				<field name="wbcerechtbtncolor"
+					type="color"
+					format="rgba"
+					label="PLG_WBCERECHTCOOKIECONSENT_BUTTON_COLOR_LABEL"
+				/>
+				<field name="wbcerechtbtnbgcolor"
+					type="color"
+					format="rgba"
+					label="PLG_WBCERECHTCOOKIECONSENT_BUTTON_BG_COLOR_LABEL"
+				/>
+				<field name="wbcerechtbtnhovercolor"
+					type="color"
+					format="rgba"
+					label="PLG_WBCERECHTCOOKIECONSENT_BUTTON_HOVERCOLOR_LABEL"
+				/>
+				<field name="wbcerechtbtnhoverbgcolor"
+					type="color"
+					format="rgba"
+					label="PLG_WBCERECHTCOOKIECONSENT_BUTTON_BG_HOVERCOLOR_LABEL"
+				/>
+				<field name="wbcerechtbtnactivecolor"
+					type="color"
+					format="rgba"
+					label="PLG_WBCERECHTCOOKIECONSENT_BUTTON_ACTIVECOLOR_LABEL"
+				/>
+				<field name="wbcerechtbtnactivebgcolor"
+					type="color"
+					format="rgba"
+					label="PLG_WBCERECHTCOOKIECONSENT_BUTTON_BG_ACTIVECOLOR_LABEL"
+				/>
+				<field name="wbcerechtoverlaybgcolor"
+					type="color"
+					format="rgba"
+					default="rgba(0,0,0,0.05)"
+					label="PLG_WBCERECHTCOOKIECONSENT_OVERLAY_BG_COLOR_LABEL"	
+				/>
+				<field name="wbcerechtoverlaycolor"
+					type="color"
+					default="#000000"
+					label="PLG_WBCERECHTCOOKIECONSENT_OVERLAY_COLOR_LABEL"	
+				/>
+			</fieldset>
+        </fields>
+    </config>
+</extension>
