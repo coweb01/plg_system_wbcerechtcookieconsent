@@ -2,7 +2,7 @@
     "Google Maps ACF": [
       {
       "id": "S1pcEj_jZX",
-      "container": ".google-maps"
+      "container": ".map-item"
       }
     ],
     "Google Maps Yoo": [
@@ -44,7 +44,7 @@
     "Open Street Map ACF": [
       {
         "id": "j7Igy6o8D",
-        "container": ".openstreetmap"
+        "container": ".map-item"
       }
     ],
     "Matomo": [
