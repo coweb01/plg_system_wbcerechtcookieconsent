@@ -7,7 +7,7 @@
 	<creationDate>23.08.2024</creationDate>
 	<copyright>Copyright (C) 2024 das-webconcept.com, All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses GNU/GPL</license>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<description>PLG_WBCERECHTCOOKIECONSENT_DESCRIPTION</description>
 	<namespace path="src">Joomla\Plugin\System\WbcErechtCookieConsent</namespace>
 	<files>
