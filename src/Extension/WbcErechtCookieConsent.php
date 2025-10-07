@@ -101,8 +101,7 @@ final class WbcErechtCookieConsent extends CMSPlugin implements SubscriberInterf
 		$this->wbcblockedcontent = $this->params->get('wbcblockedcontent');
 	}
 
-    function onBeforeCompileHead() 
-	 {
+    function onBeforeCompileHead() {
 		$app 			= Factory::getApplication();
 		if ( $app->isClient('administrator') ) {
 			return;
@@ -187,7 +186,7 @@ final class WbcErechtCookieConsent extends CMSPlugin implements SubscriberInterf
 		}
 
 		// externes Skript 
-		echo HtmlHelper::_('script', $wbcerechtcookieurl, [], ['id' => 'usercentrics-cmp', 'data-eu-mode' => 'true', 'data-settings-id' => $wbcerechtcookieid]);
+		echo HtmlHelper::_('script', $wbcerechtcookieurl, [], ['id' => 'usercentrics-cmp', 'async' => true, 'data-eu-mode' => 'true', 'data-settings-id' => $wbcerechtcookieid]);
 		echo HtmlHelper::_('script', $wbcerechtcookiedataprotector, [], []);
 		echo HtmlHelper::_('script', 'https://privacy-proxy.usercentrics.eu/legacy/uc-block.bundle.js', [], []);
 		
